@@ -1,7 +1,9 @@
 body, html {
-  background: #222;
+  background: #fff;
+  color: #555;
   width: 100%;
   height: 100%;
+  -webkit-font-smoothing: antialiased;
 }
 #app {
   width: 100%;
@@ -23,6 +25,22 @@ body, html {
   height: 100%;
   overflow: hidden;
   background: #ddd;
+}
+.img-sec .img-figure {
+  position: absolute;
+  width: 320px;
+  height: 360px;
+  margin: 0;
+  padding: 40px;
+  background: #fff;
+  box-sizing: border-box;
+}
+.img-sec .img-title {
+  margin: 20px 0 0 0;
+  color: #a7a0a2;
+  font-size: 14px;
+  font-family: "Microsoft YaHei";
+  text-align: center;
 }
 /* E-Img-sec */
 

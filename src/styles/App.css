@@ -1,0 +1,42 @@
+body, html {
+  background: #222;
+  width: 100%;
+  height: 100%;
+}
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+/* S-Stage */
+.stage {
+  position: relative;
+  width: 100%;
+  height: 680px;
+}
+/* E-Stage */
+
+/* S-Img-sec */
+.img-sec {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #ddd;
+}
+/* E-Img-sec */
+
+/* S-Nav */
+.controller-nav {
+  position: absolute;
+  left: 0;
+  bottom: 30px;
+  z-index: 101;
+  width: 100%;
+  text-align: center;
+}
+/* E-Nav */
+
+
+
+

@@ -2,6 +2,7 @@ require('normalize.css/normalize.css');
 require('styles/App.css');
 
 import React from 'react';
+import ReactDOM from 'react-dom'
 
 //拿取images文件夹中的json
 let imageDatas = require('../data/imageDatas.json');
@@ -34,14 +35,26 @@ class ImgFigure extends React.Component {
 
 
 class AppComponent extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    function randomIndex(length) {
+      return Math.floor(Math.random()*length);
+    }
+    ReactDOM.findDOMNode(this.img0).className += ' center';
+  }
+
   render() {
 
     let controllerUnits = [],
         imgFigures = [];
 
     imageDatas.forEach(function (value, index) {
-      imgFigures.push(<ImgFigure data={value} key={index} />);
-    });
+      imgFigures.push(<ImgFigure data={value} key={index} ref={(figure) => {this['img' + index] = figure;}} />);
+    }.bind(this));
 
     return (
       <section className="stage">

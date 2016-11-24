@@ -41,7 +41,7 @@ body, html {
 .img-sec .img-title {
   margin: 20px 0 0 0;
   color: #a7a0a2;
-  font: 14px "微软雅黑";
+  font: 14px "Microsoft YaHei";
   text-align: center;
 }
 .img-wrap {
@@ -63,7 +63,7 @@ body, html {
 .img-sec .back {
   color: #a7a0a2;
   background: #eee;
-  font: 14px "微软雅黑";
+  font: 14px "Microsoft YaHei";
   padding-left: 15px;
   box-sizing: border-box;
   transform: rotateY(180deg);

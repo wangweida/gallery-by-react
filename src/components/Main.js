@@ -11,7 +11,7 @@ let imageDatas = require('../data/imageDatas.json');
 imageDatas = (function getImageUrl(imageDatas) {
   "use strict";
   imageDatas.forEach(function (item, index) {
-    item.url = require('../images/' + item.fileName);
+    item.url = require(`../images/${item.fileName}`);
   });
 
   return imageDatas;
@@ -46,8 +46,10 @@ class ImgFigureComponent extends React.Component {
   render() {
 
     let styleObj = this.props.css.pos;
+
+    // console.log(this.props.css.pos);
     if(!this.props.css.isCenter) {
-      styleObj.transform = this.props.css.rotate.transform;
+      styleObj.transform += this.props.css.rotate.transform;
     }
     else {
       styleObj.zIndex = 999;
@@ -151,12 +153,11 @@ class AppComponent extends React.Component {
 
     rightFigure.forEach((item) => {
       item.pos = {
-        left : this.tools.randomNumTool(this.constPos.rightRange.x),
-        top : this.tools.randomNumTool(this.constPos.rightRange.y)
+        transform : `translate3d(${this.tools.randomNumTool(this.constPos.rightRange.x)}px,${this.tools.randomNumTool(this.constPos.rightRange.y)}px,0)`
       };
 
       item.rotate = {
-        transform : 'rotate(' + this.tools.randomNumTool([-30, 30]) + 'deg)'
+        transform : `rotate(${this.tools.randomNumTool([-30, 30])}deg)`
       };
 
       item.isCenter = false;
@@ -165,11 +166,10 @@ class AppComponent extends React.Component {
     leftFigure.forEach((item) => {
       imgRangeArr.splice(item, 0, {
         pos : {
-          left : this.tools.randomNumTool(this.constPos.leftRange.x),
-          top : this.tools.randomNumTool(this.constPos.leftRange.y)
+          transform: `translate3d(${this.tools.randomNumTool(this.constPos.leftRange.x)}px,${this.tools.randomNumTool(this.constPos.leftRange.y)}px,0)`
         },
         rotate : {
-          transform : 'rotate(' + this.tools.randomNumTool([-30, 30]) + 'deg)'
+          transform : `rotate(${this.tools.randomNumTool([-30, 30])}deg)`
         },
         isCenter : false
       })
@@ -181,7 +181,7 @@ class AppComponent extends React.Component {
       pos : this.constPos.centerPos,
       isCenter : true,
       rotate : {
-        transform : 'rotate(' + this.tools.randomNumTool([-30, 30]) + 'deg)'
+        transform : `rotate(${this.tools.randomNumTool([-30, 30])}deg)`
       }
     });
 
@@ -203,8 +203,7 @@ class AppComponent extends React.Component {
 
         //获取居中位置
         centerPos = {
-          left : 0.5 * imgSecWidth - 0.5 * figureWidth,
-          top : 0.5 * imgSecHeight - 0.5 * figureHeight
+          transform : `translate3d(${0.5 * imgSecWidth - 0.5 * figureWidth}px,${0.5 * imgSecHeight - 0.5 * figureHeight}px,0)`
         },
 
         //获取左右两侧坐标范围

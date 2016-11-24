@@ -15,6 +15,7 @@ body, html {
   position: relative;
   width: 100%;
   height: 680px;
+  -webkit-perspective: 800px;
 }
 /* E-Stage */
 
@@ -33,18 +34,44 @@ body, html {
   margin: 0;
   padding: 40px;
   background: #fff;
+  transition: .4s ease;
+  border: 2px solid #eee;
   box-sizing: border-box;
 }
 .img-sec .img-title {
   margin: 20px 0 0 0;
   color: #a7a0a2;
-  font-size: 14px;
-  font-family: "Microsoft YaHei";
+  font: 14px "微软雅黑";
   text-align: center;
+}
+.img-wrap {
+  position: relative;
+  transition: .8s ease;
+  transform-style: preserve-3d;
+  height: 100%;
+  width: 100%;
+}
+.img-sec .side {
+  position: absolute;
+  backface-visibility:hidden;
+  width: 100%;
+  height: 100%;
+}
+.img-sec .front {
+  transform: rotateY(0deg);
+}
+.img-sec .back {
+  color: #a7a0a2;
+  background: #eee;
+  font: 14px "微软雅黑";
+  padding-left: 15px;
+  box-sizing: border-box;
+  transform: rotateY(180deg);
 }
 .img-sec .center {
   top: 50%;
   left: 50%;
+  z-index: 999;
   margin: -180px 0 0 -160px;
 }
 /* E-Img-sec */

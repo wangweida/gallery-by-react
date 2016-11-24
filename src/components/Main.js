@@ -27,9 +27,12 @@ class ImgFigureComponent extends React.Component {
   }
 
   clickHandle(event) {
+
+    //不是居中的图片就让此图片居中
     if(!this.props.css.isCenter) {
       this.props.range(this.props.index);
     }
+    //是居中的图片就反转背面信息
     else {
       if(this.reversal.style.transform !== 'rotateY(180deg)') {
         this.reversal.style.transform = 'rotateY(180deg)';
@@ -47,7 +50,7 @@ class ImgFigureComponent extends React.Component {
 
     let styleObj = this.props.css.pos;
 
-    // console.log(this.props.css.pos);
+    //如果是居中的图片调整z-index，不是居中的图片加旋转角度
     if(!this.props.css.isCenter) {
       styleObj.transform += this.props.css.rotate.transform;
     }
@@ -151,6 +154,7 @@ class AppComponent extends React.Component {
 
     }
 
+    //右侧左侧用translate3d
     rightFigure.forEach((item) => {
       item.pos = {
         transform : `translate3d(${this.tools.randomNumTool(this.constPos.rightRange.x)}px,${this.tools.randomNumTool(this.constPos.rightRange.y)}px,0)`
@@ -177,6 +181,7 @@ class AppComponent extends React.Component {
 
 
 
+    //中间加上状态isCenter
     imgRangeArr.splice(centerIndex, 0, {
       pos : this.constPos.centerPos,
       isCenter : true,
@@ -185,6 +190,8 @@ class AppComponent extends React.Component {
       }
     });
 
+
+    //更新状态
     this.setState({
       imgRangeArr : imgRangeArr
     });
@@ -220,7 +227,6 @@ class AppComponent extends React.Component {
 
     this.reRange();
 
-
   }
 
 
@@ -230,6 +236,7 @@ class AppComponent extends React.Component {
     let controllerUnits = [],
         imgFigures = [];
 
+    //给imgRangeArr数组初始化，方便reRange函数中使用
     imageDatas.forEach(function (value, index) {
       if(!this.state.imgRangeArr[index]) {
         this.state.imgRangeArr[index] = {
@@ -243,7 +250,7 @@ class AppComponent extends React.Component {
           isCenter : false
         }
       }
-
+      
       imgFigures.push(<ImgFigureComponent data={value} index={index} key={index} range={this.reRange.bind(this)} ref={(figure) => {this['img' + index] = figure;}} css={this.state.imgRangeArr[index]} />);
     }.bind(this));
 
